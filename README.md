@@ -19,6 +19,16 @@ SLA Airline API is a robust backend solution designed to manage modern airline o
 
 ---
 
+## Data Model (ER Diagram)
+The database structure is designed to support high-performance flight querying and secure ticketing.
+
+<img src="/assets/er_diagram.png" width="500" style="height: auto;" alt="ER Diagram">
+<img src="/assets/details.png" width="800" style="height: auto;" alt="ER Diagram Details">
+<img src="/assets/relations.png" width="800" style="height: auto;" alt="ER Diagram Relations">
+
+
+---
+
 ## Research & Development Journey
 During the lifecycle of this project, I conducted extensive research to implement industry-standard practices and overcome deployment challenges:
 
@@ -32,7 +42,7 @@ During the lifecycle of this project, I conducted extensive research to implemen
 
 ---
 
-## 📊 Load Testing Report (Performance Analysis)
+## Load Testing Report (Performance Analysis)
 
 I performed a rigorous stress test using **k6** to evaluate the system's stability under high concurrency.
 
@@ -58,7 +68,18 @@ Below are the results captured during the **100 Virtual Users (VU)** stress test
 <img src="k6_load_testing.png" width="600" alt="k6 Load Test Results">
 
 
-### 💡 Performance Insights
+### Performance Insights
 * **Security Resilience:** The 50% error rate is a **positive security indicator**. [cite_start]It confirms the JWT middleware successfully blocked 1230 unauthorized attempts to access protected passenger data, returning the correct `401 Unauthorized` status[cite: 1].
 * **Bottleneck Analysis:** The spike in p95 latency (4.93s) was identified as a CPU/RAM limitation of the Azure Basic tier during peak load.
 * **Scalability Recommendations:** Future versions will implement **Redis Caching** to reduce database load and **Horizontal Auto-scaling** on Azure to maintain low latency during traffic spikes.
+
+---
+
+## 🔗 Deployed Swagger URL
+The API is currently hosted on Microsoft Azure:
+[cite_start]👉 [SLA Airline API Swagger Docs](https://sila-api-air-gsh6hgdxgwcedub0.francecentral-01.azurewebsites.net/apidocs/)[cite: 1]
+
+
+## Video Presentation
+You can find the video presentation of this project, covering the architecture and a live demo of the Swagger UI, via the link below:
+[cite_start][Click here for the Presentation Video (https://youtu.be/3kuWC800-oQ?si=8lf1yyreqP9fgzAO)][cite: 1]
