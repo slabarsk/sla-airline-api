@@ -65,7 +65,7 @@ Below are the results captured during the **100 Virtual Users (VU)** stress test
 | **HTTP Error Rate** | 50.00% (Expected 401 Unauthorized) |
 
 
-<img src="k6_load_testing.png" width="600" alt="k6 Load Test Results">
+<img src="/assets/k6_load_testing.png" width="600" alt="k6 Load Test Results">
 
 
 ### Performance Insights
