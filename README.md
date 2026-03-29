@@ -33,12 +33,12 @@ The database structure is designed to support high-performance flight querying a
 During the lifecycle of this project, I conducted extensive research to implement industry-standard practices and overcome deployment challenges:
 
 ### 1. Architectural Patterns
-* **Layered Design:** I moved away from monolithic scripts by implementing **Flask Blueprints**. [cite_start]This separates the application into logical layers: Routes (Controllers), Services, and Models[cite: 1].
-* [cite_start]**Data Transfer:** Used **Marshmallow** for object serialization to ensure clean and structured API responses[cite: 1].
+* **Layered Design:** I moved away from monolithic scripts by implementing **Flask Blueprints**. This separates the application into logical layers: Routes (Controllers), Services, and Models.
+* **Data Transfer:** Used **Marshmallow** for object serialization to ensure clean and structured API responses.
 
 ### 2. Cloud Engineering (Azure)
-* [cite_start]**Gunicorn Integration:** Researched how to run Python in production using WSGI servers rather than the built-in Flask development server[cite: 1].
-* [cite_start]**Environment Configuration:** Solved deployment bottlenecks by mapping `WEBSITES_PORT` to 8000 and defining custom startup commands to handle Azure’s Linux container lifecycle[cite: 1].
+* **Gunicorn Integration:** Researched how to run Python in production using WSGI servers rather than the built-in Flask development server.
+* **Environment Configuration:** Solved deployment bottlenecks by mapping `WEBSITES_PORT` to 8000 and defining custom startup commands to handle Azure’s Linux container lifecycle.
 
 ---
 
@@ -69,7 +69,7 @@ Below are the results captured during the **100 Virtual Users (VU)** stress test
 
 
 ### Performance Insights
-* **Security Resilience:** The 50% error rate is a **positive security indicator**. [cite_start]It confirms the JWT middleware successfully blocked 1230 unauthorized attempts to access protected passenger data, returning the correct `401 Unauthorized` status[cite: 1].
+* **Security Resilience:** The 50% error rate is a **positive security indicator**. It confirms the JWT middleware successfully blocked 1230 unauthorized attempts to access protected passenger data, returning the correct `401 Unauthorized` status.
 * **Bottleneck Analysis:** The spike in p95 latency (4.93s) was identified as a CPU/RAM limitation of the Azure Basic tier during peak load.
 * **Scalability Recommendations:** Future versions will implement **Redis Caching** to reduce database load and **Horizontal Auto-scaling** on Azure to maintain low latency during traffic spikes.
 
@@ -77,4 +77,4 @@ Below are the results captured during the **100 Virtual Users (VU)** stress test
 
 ## 🔗 Deployed Swagger URL
 The API is currently hosted on Microsoft Azure:
-[cite_start]👉 [SLA Airline API Swagger Docs](https://sila-api-air-gsh6hgdxgwcedub0.francecentral-01.azurewebsites.net/apidocs/)[cite: 1]
+👉 [SLA Airline API Swagger Docs](https://sila-api-air-gsh6hgdxgwcedub0.francecentral-01.azurewebsites.net/apidocs/)
