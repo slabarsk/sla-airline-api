@@ -78,8 +78,3 @@ Below are the results captured during the **100 Virtual Users (VU)** stress test
 ## 🔗 Deployed Swagger URL
 The API is currently hosted on Microsoft Azure:
 [cite_start]👉 [SLA Airline API Swagger Docs](https://sila-api-air-gsh6hgdxgwcedub0.francecentral-01.azurewebsites.net/apidocs/)[cite: 1]
-
-
-## Video Presentation
-You can find the video presentation of this project, covering the architecture and a live demo of the Swagger UI, via the link below:
-[cite_start][Click here for the Presentation Video (https://youtu.be/3kuWC800-oQ?si=8lf1yyreqP9fgzAO)][cite: 1]
