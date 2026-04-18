@@ -8,3 +8,4 @@ __pycache__/
 instance/
 .DS_Store
 *.bak
+*.save
