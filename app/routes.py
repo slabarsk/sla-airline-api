@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import create_access_token, jwt_required
 from .services import FlightService
+from .models import Flight
 
 api_bp = Blueprint('api', __name__)
 
@@ -325,3 +326,17 @@ def passenger_list():
         
     response, status_code = FlightService.get_passenger_list(flight_number, page)
     return jsonify(response), status_code
+
+    # --- 8. UÇUŞ TARİHLERİ ---
+@api_bp.route('/flights/dates', methods=['GET'])
+def get_flight_dates():
+    airport_from = request.args.get('airport_from')
+    airport_to   = request.args.get('airport_to')
+    if not airport_from or not airport_to:
+        return jsonify({"dates": []})
+    flights = Flight.query.filter_by(
+        airport_from=airport_from,
+        airport_to=airport_to
+    ).all()
+    dates = sorted([f.date_from.strftime('%Y-%m-%dT%H:%M:%S') for f in flights])
+    return jsonify({"dates": dates})

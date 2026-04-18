@@ -62,26 +62,30 @@ class FlightService:
                 "transaction_status": "Error", 
                 "file_processes_status": f"Dosya işlenirken hata oluştu: {str(e)}"
             }, 400
-
     @staticmethod
     def query_flights(date_from, airport_from, airport_to, number_of_people, page=1):
         try:
             search_date = datetime.fromisoformat(date_from).date()
+            start_dt = datetime.combine(search_date, datetime.min.time())
+            end_dt   = datetime.combine(search_date, datetime.max.time())
+
             query = Flight.query.filter(
                 Flight.airport_from == airport_from,
                 Flight.airport_to == airport_to,
-                Flight.capacity >= number_of_people
-            )
+                Flight.capacity >= number_of_people,
+                Flight.date_from >= start_dt,
+                Flight.date_from <= end_dt,
+            ).order_by(Flight.date_from.asc())
+
             paginated_flights = query.paginate(page=page, per_page=10, error_out=False)
-            
-            flight_list = []
-            for f in paginated_flights.items:
-                if f.date_from.date() == search_date:
-                    flight_list.append({
-                        "Flight number": f.flight_number,
-                        "duration": f.duration
-                    })
-                    
+
+            flight_list = [{
+                "Flight number": f.flight_number,
+                "duration": f.duration,
+                "date_from": f.date_from.strftime("%H:%M"),
+                "date_to": f.date_to.strftime("%H:%M")
+            } for f in paginated_flights.items]
+
             return {
                 "available_flights": flight_list,
                 "current_page": paginated_flights.page,

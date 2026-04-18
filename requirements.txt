@@ -7,3 +7,4 @@ flasgger==0.9.7.1
 requests==2.32.3
 SQLAlchemy==2.0.48
 gunicorn
+psycopg2-binary==2.9.9python-dotenv==1.0.0
