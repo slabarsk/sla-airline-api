@@ -20,11 +20,11 @@ fi
 echo ">>> Flask API ayakta"
 
 # Flask'a test request at
-curl -s http://127.0.0.1:5000/api/v1/flights/query?airport_from=ADB\&airport_to=ESB\&date_from=2026-06-20T00:00:00\&number_of_people=1 | head -c 200
+curl -s http://127.0.0.1:5000/flights/query?airport_from=ADB\&airport_to=ESB\&date_from=2026-06-20T00:00:00\&number_of_people=1 | head -c 200
 echo ""
 
 # Gateway'i foreground'da başlat (Azure $PORT'da)
-export API_URL="http://127.0.0.1:5000/api/v1"
+export API_URL="http://127.0.0.1:5000"
 GATEWAY_PORT=${PORT:-8080}
 echo ">>> Gateway başlatılıyor (port $GATEWAY_PORT)..."
 exec python3 gateway.py
